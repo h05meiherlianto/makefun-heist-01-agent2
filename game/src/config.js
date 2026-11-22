@@ -61,18 +61,30 @@ export const LEVELS = [
     ],
     guards: [
       {
+        // Play-test revision (22 Nov 2026): the old rectangular loop had
+        // two faults — the middle of the room was unwatched (the thief
+        // could stand at (460, 350) for 5+ seconds, alarm 0), and the top
+        // leg y=120 ran straight into the statue plinth at (540, 90), so
+        // the guard parked against it forever (verified in a Node
+        // simulation of the patrol). The loop now dips to (460, 430) to
+        // sweep the central corridor, and its top leg runs at y=290,
+        // below the plinth, so the guard completes the full loop.
         path: [
           { x: 300, y: 330 },
-          { x: 620, y: 330 },
-          { x: 620, y: 120 },
-          { x: 300, y: 120 },
+          { x: 460, y: 430 },
+          { x: 620, y: 290 },
+          { x: 300, y: 290 },
         ],
         pauseSeconds: 1.2,
       },
       {
+        // Play-test revision (22 Nov 2026): the old left leg x=900 ran
+        // into the display case at (780, 470) — the guard parked at
+        // (900, 512) forever. The left leg moved to x=740, clear of
+        // that case, so the guard patrols the whole rectangle.
         path: [
-          { x: 900, y: 560 },
-          { x: 900, y: 220 },
+          { x: 740, y: 560 },
+          { x: 740, y: 220 },
           { x: 1120, y: 220 },
           { x: 1120, y: 560 },
         ],
@@ -111,31 +123,38 @@ export const LEVELS = [
       { x: 940, y: 560, w: 200, h: 26 },
       { x: 1060, y: 300, w: 120, h: 26 },
     ],
+    // Play-test revision (22 Nov 2026): all three patrols below were
+    // re-routed — a Node simulation showed every one of them parking
+    // against a wall forever (guard 0 against the (430, 560) case at
+    // (423, 600), guard 1 against the (940, 120) case at (925, 120),
+    // guard 2 against the (700, 200) pillar at (684, 360)). Each new
+    // rectangle keeps its legs at least a guard-radius clear of every
+    // wall, so all three guards now complete their loops.
     guards: [
       {
         path: [
-          { x: 300, y: 120 },
-          { x: 300, y: 600 },
-          { x: 560, y: 600 },
-          { x: 560, y: 120 },
+          { x: 300, y: 180 },
+          { x: 300, y: 640 },
+          { x: 660, y: 640 },
+          { x: 660, y: 180 },
         ],
         pauseSeconds: 0.9,
       },
       {
         path: [
-          { x: 830, y: 600 },
-          { x: 830, y: 120 },
-          { x: 1060, y: 120 },
-          { x: 1060, y: 600 },
+          { x: 830, y: 640 },
+          { x: 830, y: 180 },
+          { x: 1200, y: 180 },
+          { x: 1200, y: 640 },
         ],
         pauseSeconds: 0.9,
       },
       {
         path: [
-          { x: 640, y: 360 },
-          { x: 1180, y: 360 },
-          { x: 1180, y: 640 },
-          { x: 640, y: 640 },
+          { x: 1200, y: 360 },
+          { x: 1200, y: 620 },
+          { x: 900, y: 620 },
+          { x: 900, y: 360 },
         ],
         pauseSeconds: 1.4,
       },
@@ -186,11 +205,14 @@ export const LEVELS = [
         pauseSeconds: 0.7,
       },
       {
+        // Play-test revision (22 Nov 2026): the old left leg x=800 ran
+        // into the (760, 300) wall — the guard parked at (800, 342)
+        // forever. The left leg moved to x=740, clear of that wall.
         path: [
-          { x: 800, y: 230 },
+          { x: 740, y: 230 },
           { x: 1000, y: 230 },
           { x: 1000, y: 470 },
-          { x: 800, y: 470 },
+          { x: 740, y: 470 },
         ],
         pauseSeconds: 0.7,
       },

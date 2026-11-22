@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Velvet Vault — A Stealth Heist Game</title>
+<style>
+  html, body {
+    margin: 0;
+    padding: 0;
+    background: #0a0e1a;
+    color: #f8fafc;
+    font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+  }
+  body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+  }
+  h1 {
+    margin: 0;
+    font-size: 22px;
+    letter-spacing: 0.18em;
+    color: #d4af37;
+  }
+  h1 span { color: #f8fafc; font-weight: 400; letter-spacing: 0.05em; font-size: 15px; }
+  canvas {
+    display: block;
+    width: 1280px;
+    height: 720px;
+    max-width: 96vw;
+    max-height: 78vh;
+    background: #1c2436;
+    border: 2px solid #d4af37;
+    border-radius: 6px;
+  }
+  p.help {
+    margin: 0;
+    font-size: 13px;
+    color: #94a3b8;
+    text-align: center;
+    max-width: 1280px;
+  }
+  p.help b { color: #e2e8f0; }
+</style>
+</head>
+<body>
+<h1>VELVET VAULT <span>— a stealth heist in three museum rooms</span></h1>
+<canvas id="game" width="1280" height="720"></canvas>
+<p class="help"><b>WASD / arrows</b> move &nbsp;·&nbsp; <b>Shift</b> sneak &nbsp;·&nbsp; <b>E</b> crack a safe &nbsp;·&nbsp; <b>1</b> EMP −150 &nbsp;·&nbsp; <b>2</b> smoke −100 &nbsp;·&nbsp; <b>3</b> lockpick −50 &nbsp;·&nbsp; <b>P</b> pause &nbsp;·&nbsp; <b>M</b> mute</p>
+<p class="help">Lift the required loot, then slip out the green exit. Stay out of the guards' cones and the cameras' sweep — the alarm meter climbs while you are seen.</p>
+<script type="module" src="./src/main.js"></script>
+</body>
+</html>
